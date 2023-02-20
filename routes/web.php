@@ -26,3 +26,13 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function() {
+    Route::get('news/create', App\Http\Livewire\NewsCreate::class)->name('news.create');
+});
+
+/** Primary Site Navigation ** */
+Route::view('/boardgames', 'boardgame')->name('view.boardgame');
+Route::view('/books', 'book')->name('view.book');
+Route::view('/podcasts', 'podcast')->name('view.podcast');
+Route::view('/about', 'about')->name('view.about');
