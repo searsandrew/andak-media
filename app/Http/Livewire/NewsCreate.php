@@ -28,10 +28,10 @@ class NewsCreate extends Component
     {
         $this->validate();
 
-        $this->image->store('public/images/news');
+        $this->image->store();
         $this->news->save();
         $this->news->image()->create([
-            'image' => 'images/news/' . $this->image->hashName(),
+            'image' => $this->image->hashName(),
         ]);
 
         $this->emit('saved');
