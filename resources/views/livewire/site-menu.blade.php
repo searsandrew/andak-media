@@ -1,22 +1,16 @@
 <nav x-data="{ open: false }" class="z-50 w-full fixed top-0 bg-transparent">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-center h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-mark class="block h-9 w-auto" />
-                    </a>
-                </div>
-
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('view.boardgame') }}" :active="request()->routeIs('view.boardgame')">{{ __('Boardgames') }}</x-nav-link>
-                    <x-nav-link href="{{ route('view.book') }}" :active="request()->routeIs('view.book')">{{ __('Books') }}</x-nav-link>
-                    <x-nav-link href="{{ route('view.podcast') }}" :active="request()->routeIs('view.podcast')">{{ __('Podcasts') }}</x-nav-link>
-                    <x-nav-link href="#">{{ __('In the Lab') }}</x-nav-link>
-                    <x-nav-link href="{{ route('view.about') }}" :active="request()->routeIs('view.about')">{{ __('About Us') }}</x-nav-link>
+                    <x-site-nav-link href="{{ route('view.boardgame') }}" :active="request()->routeIs('view.boardgame')">{{ __('Boardgames') }}</x-site-nav-link>
+                    <x-site-nav-link href="{{ route('view.book') }}" :active="request()->routeIs('view.book')">{{ __('Books') }}</x-site-nav-link>
+                    <x-site-nav-link href="{{ route('view.podcast') }}" :active="request()->routeIs('view.podcast')">{{ __('Podcasts') }}</x-site-nav-link>
+                    <a href="#" class="flex items-center"><x-application-mark class="block h-9 w-auto" /></a>
+                    <x-site-nav-link href="#">{{ __('In the Lab') }}</x-site-nav-link>
+                    <x-site-nav-link href="{{ route('view.about') }}" :active="request()->routeIs('view.about')">{{ __('About Us') }}</x-site-nav-link>
                 </div>
             </div>
 
@@ -74,13 +68,13 @@
                 </div>
             @else
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
-                    <x-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                    <x-site-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
                         {{ __('Log in') }}
-                    </x-nav-link>
+                    </x-site-nav-link>
 
-                    <x-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                    <x-site-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
                         {{ __('Register') }}
-                    </x-nav-link>
+                    </x-site-nav-link>
                 </div>
             @endauth
 

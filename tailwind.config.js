@@ -11,6 +11,9 @@ module.exports = {
 
     theme: {
         extend: {
+            colors: {
+                andakTeal: '#83B5B3',
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
