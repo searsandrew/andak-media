@@ -21,18 +21,12 @@
         <x-banner />
         
         <div class="flex flex-col z-0 top-0">
-            <!-- Header -->
-            <header class="relative flex flex-col items-top justify-center h-[50vh] overflow-hidden">
-                @livewire('site-menu')
-                <!-- <div class="relative z-30 p-5 text-2xl text-white bg-purple-300 bg-opacity-50 rounded-xl">Welcome to my site!</div> -->
-                <video autoplay loop muted class="absolute z-10 w-auto min-w-full min-h-full max-w-full">
-                    <source src="media/header.mp4" type="video/mp4" />
-                    {{ __('Your browser does not support the video tag.') }}
-                </video>
-            </header>
+            @if (isset($header))
+                {{ $header }}
+            @endif
 
             <!-- Page Content -->
-            <main class="w-full h-screen bg-gradient-to-b from-slate-200 to-slate-400">
+            <main class="w-full min-h-[50vh] bg-gradient-to-b from-slate-200 to-slate-400">
                 {{ $slot }}
             </main>
         </div>

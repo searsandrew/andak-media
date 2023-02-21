@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    article p {
+        @apply mb-3 font-light text-slate-900
+    }
+    article a {
+        @apply text-andakOrange hover:text-andakTeal underline transition decoration-andakTeal decoration-wavy hover:decoration-andakOrange hover:decoration-wavy
+    }
+    article hr {
+        @apply my-3
+    }
+}

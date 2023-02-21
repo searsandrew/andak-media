@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::middleware([
     'auth:sanctum',
@@ -31,8 +31,16 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('news/create', App\Http\Livewire\NewsCreate::class)->name('news.create');
 });
 
+// Route::get('/news/{news}', function($news) {
+//     $find = App\Models\News::firstWhere('slug', $news);
+//     dd($find);
+// })->name('view.news');
+
+// Route::view('/news/{news}', 'page.news', ['news' => App\Models\News::firstWhere('slug', $news)])->name('view.news');
+
 /** Primary Site Navigation ** */
-Route::view('/boardgames', 'boardgame')->name('view.boardgame');
-Route::view('/books', 'book')->name('view.book');
-Route::view('/podcasts', 'podcast')->name('view.podcast');
-Route::view('/about', 'about')->name('view.about');
+Route::view('/about', 'page.about')->name('view.about');
+Route::view('/boardgames', 'page.boardgame')->name('view.boardgame');
+Route::view('/books', 'page.book')->name('view.book');
+Route::view('/news/{news}', 'page.news')->name('view.news');
+Route::view('/podcasts', 'page.podcast')->name('view.podcast');

@@ -13,6 +13,7 @@ module.exports = {
         extend: {
             colors: {
                 andakTeal: '#83B5B3',
+                andakOrange: '#bf4d28',
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
