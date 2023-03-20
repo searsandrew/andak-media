@@ -32,7 +32,7 @@
         </div>
 
         <div class="w-full bg-black text-white text-xs text-center antialiased border-t-2 border-gray-500 py-1">
-            {{ __('Copyright © :year • Andak Media is owned by Andak Printing, Inc.', ['year' => now()->year]) }} • <a href="">{{ __('Powered by PowerArmor v:version', ['version' => config('app.version')]) }}</a>
+            {{ __('Copyright © :year • Andak Media is owned by Andak Printing, Inc.', ['year' => now()->year]) }} • <a href="https://github.com/searsandrew/andak-media" class="text-orange-50 hover:text-orange-300">{{ __('Powered by PowerArmor v:version', ['version' => config('app.version')]) }}</a>
         </div>
 
         @stack('modals')
