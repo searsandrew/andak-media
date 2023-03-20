@@ -31,6 +31,10 @@
             </main>
         </div>
 
+        <div class="w-full bg-black text-white text-xs text-center antialiased border-t-2 border-gray-500 py-1">
+            {{ __('Copyright © :year • Andak Media is owned by Andak Printing, Inc.', ['year' => now()->year]) }} • <a href="">{{ __('Powered by PowerArmor v:version', ['version' => config('app.version')]) }}</a>
+        </div>
+
         @stack('modals')
 
         @livewireScripts

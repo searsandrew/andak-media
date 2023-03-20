@@ -145,6 +145,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | PowerArmor Version
+    |--------------------------------------------------------------------------
+    |
+    | PowerArmor is a retailer platform custom built for Andak Media to provide
+    | easy integration for retail partners and for games/podcasting catalogs.
+    |
+    */
+
+    'version' => '1.0.0',
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
@@ -196,6 +208,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        App\Providers\ViewServiceProvider::class,
 
     ],
 

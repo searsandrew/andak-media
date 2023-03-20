@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -23,6 +24,13 @@ class News extends Model
         parent::boot();
         self::creating(function ($model) {
             $model->user_id = Auth::user()->id;
+        });
+    }
+
+    protected static function booted()
+    {
+        static::addGlobalScope('orderByDate', function (Builder $builder) {
+            $builder->orderBy('created_at', 'DESC');
         });
     }
 
