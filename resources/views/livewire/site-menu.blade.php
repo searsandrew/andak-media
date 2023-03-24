@@ -5,12 +5,12 @@
             <div class="flex">
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-site-nav-link href="{{ route('view.boardgame') }}" :active="request()->routeIs('view.boardgame')">{{ __('Boardgames') }}</x-site-nav-link>
-                    <x-site-nav-link href="{{ route('view.book') }}" :active="request()->routeIs('view.book')">{{ __('Books') }}</x-site-nav-link>
-                    <x-site-nav-link href="{{ route('view.podcast') }}" :active="request()->routeIs('view.podcast')">{{ __('Podcasts') }}</x-site-nav-link>
+                    <x-site-nav-link href="{{ route('view.content', 'boardgames') }}" :active="request()->routeIs('view.boardgame')">{{ __('Boardgames') }}</x-site-nav-link>
+                    <x-site-nav-link href="{{ route('view.content', 'books') }}" :active="request()->routeIs('view.book')">{{ __('Books') }}</x-site-nav-link>
+                    <x-site-nav-link href="{{ route('view.content', 'podcasts') }}" :active="request()->routeIs('view.podcast')">{{ __('Podcasts') }}</x-site-nav-link>
                     <a href="{{ route('home') }}" class="flex items-center"><x-application-mark class="block h-9 w-auto" /></a>
                     <x-site-nav-link href="#">{{ __('In the Lab') }}</x-site-nav-link>
-                    <x-site-nav-link href="{{ route('view.about') }}" :active="request()->routeIs('view.about')">{{ __('About Us') }}</x-site-nav-link>
+                    <x-site-nav-link href="{{ route('view.content', 'about') }}" :active="request()->routeIs('view.about')">{{ __('About Us') }}</x-site-nav-link>
                 </div>
             </div>
 

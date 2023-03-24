@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->bigInteger('type_id')->unsigned();
-            $table->foreign('type_id')->references('id')->on('types');
             $table->string('slug');
-            $table->string('title');
-            $table->text('content')->nullable();
+            $table->string('name');
+            $table->json('icon');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('types');
     }
 };
