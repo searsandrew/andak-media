@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+use App\Policies\NewsPolicy;
+use App\Policies\ProductPolicy;
+
 use Auth;
 
 class AuthServiceProvider extends ServiceProvider
@@ -26,5 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin', function() { 
             return in_array(Auth::user()->id, explode(',', env('APP_ADMIN'))) ? TRUE : FALSE; 
         });
+        Gate::define('author', [NewsPolicy::class, 'create']);
+        Gate::define('order', [ProductPolicy::class, 'create']);
     }
 }

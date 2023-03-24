@@ -224,6 +224,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Carbon' => Carbon\Carbon::class,
         'Helper' => App\Helpers\Helper::class,
     ])->toArray(),
 

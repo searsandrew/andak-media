@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    @if($types->count > 0)
+    @if($types->count() > 0)
         <div class="flex flex-row max-w-7xl mx-auto sm:px-6 lg:px-8">
             <form wire:submit.prevent="save">
                 <div class="col-span-6 sm:col-span-4">

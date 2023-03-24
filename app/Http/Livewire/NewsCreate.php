@@ -2,15 +2,19 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\News;
+use App\Models\Type;
 
 class NewsCreate extends Component
 {
     use WithFileUploads;
 
     public News $news;
+    public Collection $types;
     public $image;
 
     protected $rules = [
@@ -22,6 +26,7 @@ class NewsCreate extends Component
     public function mount()
     {
          $this->news = new News();
+         $this->types = Type::all();
     }
 
     public function save()
@@ -37,7 +42,7 @@ class NewsCreate extends Component
         $this->emit('saved');
     }
 
-    public function render()
+    public function render() : View
     {
         return view('livewire.news-create');
     }
