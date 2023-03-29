@@ -10,6 +10,13 @@ class News extends Setup
 {
     public $fillable = ['title', 'content'];
 
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
+
     public function image() : MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');

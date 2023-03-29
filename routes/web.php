@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\NewsCreate;
+use App\Http\Livewire\ProductType;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,15 +30,9 @@ Route::middleware([
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function() {
+    Route::get('type', ProductType::class)->name('type');
     Route::get('news/create', NewsCreate::class)->name('news.create');
 });
-
-// Route::get('/news/{news}', function($news) {
-//     $find = App\Models\News::firstWhere('slug', $news);
-//     dd($find);
-// })->name('view.news');
-
-// Route::view('/news/{news}', 'page.news', ['news' => App\Models\News::firstWhere('slug', $news)])->name('view.news');
 
 /** Primary Site Navigation ** */
 Route::view('/news/{news}', 'page.news')->name('view.news');

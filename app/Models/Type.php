@@ -5,11 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Model;
 
-class Type extends Model
+class Type extends Setup
 {
-    use HasFactory;
+    protected $fillable = ['name', 'icon'];
+
+    public function attributes() : HasMany
+    {
+        return $this->hasMany(Attribute::class);
+    }
 
     public function products() : HasMany
     {
