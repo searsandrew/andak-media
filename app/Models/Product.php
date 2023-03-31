@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Setup
 {
-    protected $fillable = ['name', 'content'];
+    protected $fillable = ['type_id', 'name', 'content'];
 
     public function attributes() : BelongsToMany
     {
