@@ -16,7 +16,7 @@
 
                 <div class="input-group mt-3">
                     <x-label for="content" value="{{ __('Content') }}" />
-                    <livewire:trix value="NOne">
+                    <livewire:trix value="None">
                     <x-input-error for="content" class="mt-2" />
                 </div>
 
@@ -29,6 +29,12 @@
                         @endforeach
                     </select>
                     <x-input-error for="type" class="mt-2" />
+                </div>
+
+                <div class="input-group mt-3">
+                    <x-label for="image" value="{{ __('Primary Product Image') }}" />
+                    <input type="file" wire:model="image">
+                    <x-input-error for="image" class="mt-2" />
                 </div>
             @else
                 <div class="flex flex-row items-center">

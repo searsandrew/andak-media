@@ -36,4 +36,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
 /** Primary Site Navigation ** */
 Route::view('/news/{news}', 'page.news')->name('view.news');
+Route::view('/{type}/{product}', 'page.product')->name('view.product');
 Route::view('/{content}', 'page.content')->name('view.content');

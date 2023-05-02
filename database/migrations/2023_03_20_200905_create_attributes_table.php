@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('name');
             $table->enum('type', ['string', 'float', 'array'])->default('string');
+            $table->enum('location', ['primary', 'labeled', 'unlabeled'])->default('labeled');
             $table->timestamps();
             $table->softDeletes();
         });

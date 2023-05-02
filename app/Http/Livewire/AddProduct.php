@@ -4,15 +4,19 @@ namespace App\Http\Livewire;
 
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use App\Models\Attribute;
 use App\Models\Product;
 use App\Models\Type;
 
 class AddProduct extends Component
 {
+    use WithFileUploads;
+
     public bool $addingProduct = false;
     public string $name, $content, $type;
     public array $attribute;
+    public $image;
     public Collection $attributes;
     public Collection $types;
     public Product $product;
@@ -60,13 +64,19 @@ class AddProduct extends Component
             [
                 'name' => 'required',
                 'content' => 'required',
+                'image' => 'image|max:1024',
             ]
         );
 
+        $this->image->store();
         $product = Product::create([
             'type_id' => $this->type,
             'name' => $this->name,
             'content' => $this->content,
+        ]);
+        $product->image()->create([
+            'image' => $this->image->hashName(),
+            'type' => 'card',
         ]);
 
         $i = 0;

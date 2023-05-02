@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Sluggable\SlugOptions;
 
 class News extends Setup
 {
-    public $fillable = ['title', 'content'];
+    public $fillable = ['type_id', 'title', 'content'];
 
     public function getSlugOptions() : SlugOptions
     {
@@ -17,9 +18,9 @@ class News extends Setup
             ->saveSlugsTo('slug');
     }
 
-    public function image() : MorphOne
+    public function image() : MorphMany
     {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->morphMany(Image::class, 'imageable');
     }
 
     public function type() : HasOne

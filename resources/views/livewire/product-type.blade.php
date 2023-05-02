@@ -18,6 +18,13 @@
                 </x-slot>
 
                 <x-slot name="form">
+                    @if(session()->has('message'))
+                        <div>
+                            <div class="alert alert-success">
+                                {{ session('message') }}
+                            </div>
+                        </div>
+                    @endif
                     <div class="col-span-6 sm:col-span-4">
                         <x-label for="name" value="{{ __('Name') }}" />
                         <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="name" autocomplete="name" />
@@ -42,22 +49,32 @@
                         <p class="text-sm text-gray-600">{{ __('Attributes are used to identify searchable and technical information about a product. This information should be treated at short concise "facts". Descriptive output should be saved for product content.') }}</p>
                         <p class="text-sm text-slate-900 font-bold">{{ __('If an attribute is a selectable variant, be sure to check the "variable" flag.') }}</p>
                     </div>
-                    <div class="flex flex-col space-y-3 col-span-6 sm:col-span-4">
+                    <div class="flex flex-col space-y-3 col-span-6 sm:col-span-5">
                         <div class="flex flex-rowflex items-start space-x-3">
                             <div class="w-1/2">
                                 <x-label for="attribute.name" class="sr-only" value="{{ __('Attribute Name') }}" />
                                 <x-input id="attribute.name" type="text" class="block w-full" placeholder="Attribute Name" wire:model="attribute.name" autocomplete="attribute.name" />
                                 <x-input-error for="attribute.name" class="mt-2" />
                             </div>
-                            <div class="input-group w-1/3">
+                            <div class="input-group w-1/4">
                                 <x-label for="type" class="sr-only" value="{{ __('Attribute Type') }}" />
                                 <select wire:model="attribute.type" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block w-full @if($attribute['type'] == 'default') text-slate-500 @else text-black @endif">
-                                    <option value="default" >{{ __('Select Type') }}</option>
+                                    <option value="default" >{{ __('Type') }}</option>
                                     <option value="string">{{ __('Text Field') }}</option>
                                     <option value="float">{{ __('Number Only (No Text)') }}</option>
                                     <option value="array">{{ __('Variable') }}</option>
                                 </select>
                                 <x-input-error for="attribute.type" class="mt-2" />
+                            </div>
+                            <div class="input-group w-1/4">
+                                <x-label for="location" class="sr-only" value="{{ __('Attribute Location') }}" />
+                                <select wire:model="attribute.location" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block w-full @if($attribute['location'] == 'default') text-slate-500 @else text-black @endif">
+                                    <option value="default" >{{ __('Location') }}</option>
+                                    <option value="primary">{{ __('Primary') }}</option>
+                                    <option value="labeled">{{ __('Labeled Secondary') }}</option>
+                                    <option value="unlabeled">{{ __('Unlabeled Secondary') }}</option>
+                                </select>
+                                <x-input-error for="attribute.location" class="mt-2" />
                             </div>
                             <div class="input-group w-1/6 flex items-center">
                                 <span class="inline-flex items-center px-4 py-2 bg-gray-50 border border-transparent rounded-md font-semibold text-sm text-teal-800 uppercase tracking-widest hover:bg-andakTeal/30 hover:text-teal-900 active:bg-teal-800 active:text-teal-50 transition ease-in-out duration-150 cursor-pointer place-content-center text-center" wire:click="addRowToAttributes">{{ __('Add') }}</span>

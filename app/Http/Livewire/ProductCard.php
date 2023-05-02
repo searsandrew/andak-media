@@ -10,17 +10,12 @@ use Helper;
 
 class ProductCard extends Component
 {
-    public $content;
+    public $type, $content, $products;
 
     public function mount($content)
     {
-        //$singular = Str::of($this->content)->singular();
-        //$test = Helper::convertVariableToModelName($singular->ucfirst);
-
-        $test = Type::where('slug', Str::of($content)->singular());
-
-        // dd($test);
-
+        $this->type = Type::where('slug', Str::of($content)->singular())->first();
+        $this->products = $this->type->products;
     }
 
     function convertVariableToModelName($modelName='',$nameSpace='')

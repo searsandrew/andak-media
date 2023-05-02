@@ -11,11 +11,11 @@ class ProductType extends Component
 {
     public string $name = '';
     public mixed $iconCode = false, $viewBox = false;
-    public array $attributes, $attribute = ['name' => '', 'type' => 'default'];
+    public array $attributes, $attribute = ['name' => '', 'type' => 'default', 'location' => 'default'];
 
     public function mount()
     {
-        $this->attributes = [['name' => '', 'type' => 'default']];
+        $this->attributes = [['name' => '', 'type' => 'default', 'location' => 'default']];
     }
     
     public function addRowToAttributes()
@@ -23,10 +23,12 @@ class ProductType extends Component
         $this->validate(
             [
                 'attribute.name' => 'required',
-                'attribute.type' => [ 'required', Rule::in(['string', 'float', 'array']) ]
+                'attribute.type' => [ 'required', Rule::in(['string', 'float', 'array']) ],
+                'attribute.location' => [ 'required', Rule::in(['primary', 'labeled', 'unlabeled']) ],
             ], [
                 'attribute.name.required' => 'Please enter a name for the attribute',
                 'attribute.type.*' => 'Please select a type',
+                'attribute.location.*' => 'Please select a location',
             ]
         );
 
@@ -46,8 +48,6 @@ class ProductType extends Component
             ]
         );
 
-        // dd($this->attributes);
-
         $type = Auth::user()->type()->create([
             'name' => $this->name,
             'icon' => json_encode(['code' => $this->iconCode, 'viewbox' => $this->viewBox]),
@@ -55,9 +55,10 @@ class ProductType extends Component
         $type->attributes()->createMany($this->attributes);
 
         $this->reset(['name', 'iconCode', 'viewBox']);
-        $this->attributes = [['name' => '', 'type' => 'default']];
+        $this->attributes = [['name' => '', 'type' => 'default', 'location' => 'default']];
 
         $this->emit('saved');
+        session()->flash('message', 'Type successfully created.');
     }
 
     public function render()

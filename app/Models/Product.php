@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Product extends Setup
 {
@@ -12,6 +13,11 @@ class Product extends Setup
     public function attributes() : BelongsToMany
     {
         return $this->belongsToMany(Attribute::class)->withPivot('value');
+    }
+
+    public function image() : MorphMany
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 
     public function type() : BelongsTo
